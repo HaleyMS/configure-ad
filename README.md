@@ -40,7 +40,7 @@ https://1drv.ms/v/s!AsCwDBNenDxegX3NczY8Dl5uBwcs?e=DTV5PH
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+This is an image of me doing the initial set up for this project. I created two different virtual Machines in Azure. One with the Windows Server 2022 Data Center, the other on Windows 10 Pro, and set both up on the same v-net 
 </p>
 <br />
 
@@ -48,7 +48,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+In the image above I am installing Active Directory onto DC-1. In the Server Manager  I was able to configure the set up for Active Directory, under rolesI installed the Active Directory Domain Services. I was able to promote DC-1 to a domain controller, adding a new foster I named my root domain "mydomain.com". I was  loggeed out and had to use the FQDN or fully qualified domain name of the user to get back in. 
 </p>
 <br />
 
@@ -56,7 +56,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Here I am creating Organizational Units named _EMPLOYEES and _ADMINS. I created a new user with the name of HaleyMS and assigned their properties, I assigned them to the domain admins group in Active Directory. After creating the account I was successfully able to log in to the admin account on the DC-1 VM. 
 </p>
 <br />
 
@@ -64,7 +64,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+The image above shows one of the steps I took to join Client-1's VM. Inside Azure I configured the NIC Private IP address for Client-1. I configured the DNS Server to "Custom" and set it to DC-1's Private Address, and restarted the Virtual MAchine. Signing back into Client-1 I had to use the FQDN (Fully Qualified Domain Name) of my domain.     
 </p>
 <br />
 
@@ -72,7 +72,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+ From inside Client-1 I was able to set up Remote Desktop access for the non-administrative user accounts. 
 </p>
 <br />
 
@@ -80,7 +80,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+The image above is a screenshot from me creating a bunch of additional users into Active Directory. In PowerShell ISE I was able to upload a script that included new users that were randomly configured. They were added into the _EMPLOYEES file created in Active Directory. I was able to establish a remote desktop connection of a few of the random user accounts and logged into Client-1's VM. 
 </p>
 <br />
 
@@ -88,7 +88,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Here I am creating A-Records and CNAME-Records in Active Directory. I attempted to ping mainframe from Client-1 and did not get a response. I went into DC-1 and named an A-Record named mainframe, and connected it to DC-1's Private IPv4 Address. Going back to Client-1 I was able to successfully ping the mainframe. I went back to DC-1 and configured the mainframe A-Record to have an IP Address of 8.8.8.8 and attempted to ping the mainframe again from Client-1. After checked the DNS Cache i noticed the IP Address of 10.0.0.4 still reading for the mainframe. I flushed the DNS and attempted the ping again, I was able to successfully get the IP address of 8.8.8.8 I had configured the mainframe to. I than created a CNAME-Record called search and linked it to www.google.com. I was able to successfully ping "search" and get and response from the appropriate alias linked to the record.   
 </p>
 <br />
 
